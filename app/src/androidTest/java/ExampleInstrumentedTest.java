@@ -1,5 +1,3 @@
-package algonquin.cst2335.soha0222;
-
 import android.content.Context;
 
 import androidx.test.platform.app.InstrumentationRegistry;

@@ -4,4 +4,6 @@
     <string name="hello_message">Bonjour</string>
     <string name="hello">Bonjour</string>
     <string name="button_message">Je Suis Un Bouton</string>
+    <string name="editmessage">"je suis une modification "</string>
+    <string name="hinttext">je suis un indice</string>
 </resources>

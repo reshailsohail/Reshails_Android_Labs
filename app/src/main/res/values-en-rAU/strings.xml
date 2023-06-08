@@ -4,4 +4,6 @@
     <string name="hello">Hey there!</string>
     <string name="hello_message">Hello!</string>
     <string name="button_message">TestTest</string>
+    <string name="editmessage">I\'m an edit message</string>
+    <string name="hinttext">I\'m a hint text</string>
 </resources>

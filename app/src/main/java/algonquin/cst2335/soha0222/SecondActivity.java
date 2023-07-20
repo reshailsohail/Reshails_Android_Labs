@@ -45,7 +45,7 @@ public class SecondActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView);
         Button changePic = findViewById(R.id.button5);
         ImageView img = findViewById(R.id.imageViewCamera);
-        textView.setText("Welcome back " + textView);
+        textView.setText("Welcome back ");
         EditText PhoneNum = findViewById(R.id.editTextPhone2);
         CallNum.setOnClickListener(clk -> {
             String number = PhoneNum.getText().toString();

@@ -128,10 +128,11 @@ public class ChatRoom extends AppCompatActivity {
                 mDAO.insertMessage(chatMessage); // Insert the message into the database
 
                 List<ChatMessage> allMessages = mDAO.getAllMessages(); // Retrieve all messages from the database
-                messages.clear();
-                messages.addAll(allMessages);
+
 
                 runOnUiThread(() -> {
+                    messages.clear();
+                    messages.addAll(allMessages);
                     myAdapter.notifyItemInserted(messages.size() - 1);
                     binding.textInput.setText("");
                     chatModel.messages.postValue(messages);
@@ -144,10 +145,18 @@ public class ChatRoom extends AppCompatActivity {
             boolean isSentButton = false;
             ChatMessage chatMessage = new ChatMessage(message, timeSent, isSentButton);
             messages.add(chatMessage);
-            myAdapter.notifyItemInserted(messages.size() - 1);
-            binding.textInput.setText("");
-
-            chatModel.messages.postValue(messages); // Update ViewModel with the latest messages
+            Executor thread = Executors.newSingleThreadExecutor();
+            thread.execute(() -> {
+                mDAO.insertMessage(chatMessage);
+                List<ChatMessage> allMessages = mDAO.getAllMessages();
+                runOnUiThread(() -> {
+                    messages.clear();
+                    messages.addAll(allMessages);
+                    myAdapter.notifyItemInserted(messages.size() - 1);
+                    binding.textInput.setText("");
+                    chatModel.messages.postValue(messages); // Update ViewModel with the latest messages
+                });
+            });
         });
     }
 
